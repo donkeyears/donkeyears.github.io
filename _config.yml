@@ -78,5 +78,5 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:donkeyears/donkeyears.github.io.git
+  repo: https://github.com/donkeyears/donkeyears.github.io.git
   branch: master
