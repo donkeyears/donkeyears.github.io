@@ -5,18 +5,19 @@
   
 
   
-  <title>Archives: 2019/10 | donkeyears&#39;s blog site</title>
+  <title>FFMpeg 笔记 | donkeyears&#39;s blog site</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog zone for my thought">
-<meta property="og:type" content="website">
-<meta property="og:title" content="donkeyears&#39;s blog site">
-<meta property="og:url" content="http://donkeyears.github.io/archives/2019/10/index.html">
+  <meta name="description" content="FFMpeg 笔记基础一般视频播放器经过如下几步 解协议-&amp;gt; 解封装-&amp;gt;解码-&amp;gt;音视频同步-&amp;gt;设备驱动。 解协议：流媒体协议数据解析为标准封装格式数据，常见协议HTTP，RTMP，MMS等，去除传输信令数据。 解封装：分解为音频流压缩码和视频流压缩码，封装格式如MP4，MKV，RMVB，TS，FLV，AVI。如FLV解为H264编码的视频流和AAC编码的音频流。 解码：解压">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFMpeg 笔记">
+<meta property="og:url" content="http://donkeyears.github.io/2019/06/26/note/FFMpeg 笔记/index.html">
 <meta property="og:site_name" content="donkeyears&#39;s blog site">
-<meta property="og:description" content="my blog zone for my thought">
+<meta property="og:description" content="FFMpeg 笔记基础一般视频播放器经过如下几步 解协议-&amp;gt; 解封装-&amp;gt;解码-&amp;gt;音视频同步-&amp;gt;设备驱动。 解协议：流媒体协议数据解析为标准封装格式数据，常见协议HTTP，RTMP，MMS等，去除传输信令数据。 解封装：分解为音频流压缩码和视频流压缩码，封装格式如MP4，MKV，RMVB，TS，FLV，AVI。如FLV解为H264编码的视频流和AAC编码的音频流。 解码：解压">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-26T09:05:03.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="donkeyears&#39;s blog site">
-<meta name="twitter:description" content="my blog zone for my thought">
+<meta name="twitter:title" content="FFMpeg 笔记">
+<meta name="twitter:description" content="FFMpeg 笔记基础一般视频播放器经过如下几步 解协议-&amp;gt; 解封装-&amp;gt;解码-&amp;gt;音视频同步-&amp;gt;设备驱动。 解协议：流媒体协议数据解析为标准封装格式数据，常见协议HTTP，RTMP，MMS等，去除传输信令数据。 解封装：分解为音频流压缩码和视频流压缩码，封装格式如MP4，MKV，RMVB，TS，FLV，AVI。如FLV解为H264编码的视频流和AAC编码的音频流。 解码：解压">
   
     <link rel="alternate" href="/atom.xml" title="donkeyears&#39;s blog site" type="application/atom+xml">
   
@@ -67,154 +68,69 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/28/note/README/" class="archive-article-date">
-  <time datetime="2019-10-28T11:01:35.681Z" itemprop="datePublished">Oct 28</time>
+        <section id="main"><article id="post-note/FFMpeg 笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/26/note/FFMpeg 笔记/" class="article-date">
+  <time datetime="2019-06-26T09:05:01.506Z" itemprop="datePublished">2019-06-26</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/28/note/README/">README</a>
+    <h1 class="article-title" itemprop="name">
+      FFMpeg 笔记
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/21/markdown-help/" class="archive-article-date">
-  <time datetime="2019-10-21T12:15:49.227Z" itemprop="datePublished">Oct 21</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/21/markdown-help/">markdown-help</a>
-    </h1>
-  
+        <h1 id="FFMpeg-笔记"><a href="#FFMpeg-笔记" class="headerlink" title="FFMpeg 笔记"></a>FFMpeg 笔记</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>一般视频播放器经过如下几步</p>
+<p>解协议-&gt; 解封装-&gt;解码-&gt;音视频同步-&gt;设备驱动。</p>
+<p>解协议：流媒体协议数据解析为标准封装格式数据，常见协议HTTP，RTMP，MMS等，去除传输信令数据。</p>
+<p>解封装：分解为音频流压缩码和视频流压缩码，封装格式如MP4，MKV，RMVB，TS，FLV，AVI。如FLV解为H264编码的视频流和AAC编码的音频流。</p>
+<p>解码：解压缩。音频：AAC，MP3，AC-3等，视频：H.264, MPEG2,VC-1。此步最复杂。压缩数据转换为非压缩的颜色数据，如YUV420p，RGB，音频如PCM</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/20/hello-world/" class="archive-article-date">
-  <time datetime="2019-10-20T07:50:03.293Z" itemprop="datePublished">Oct 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/20/note/hexo博客搭建/" class="archive-article-date">
-  <time datetime="2019-10-20T06:48:41.561Z" itemprop="datePublished">Oct 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/06/26/note/FFMpeg 笔记/" data-id="ck2abxfvr00033aqg36k3go3t" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/16/note/QOS quality of service/" class="archive-article-date">
-  <time datetime="2019-10-16T14:17:55.366Z" itemprop="datePublished">Oct 16</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/09/note/h264/" class="archive-article-date">
-  <time datetime="2019-10-09T12:33:34.667Z" itemprop="datePublished">Oct 9</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/09/note/h264/">h264</a>
-    </h1>
+    <a href="/2019/06/26/note/Kafka/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Kafka
+        
+      </div>
+    </a>
   
+  
+    <a href="/2019/06/06/note/base64 encode/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">base64 encode</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/08/note/十分钟经济学/" class="archive-article-date">
-  <time datetime="2019-10-08T13:37:15.888Z" itemprop="datePublished">Oct 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/08/note/十分钟经济学/">十分钟经济学</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>sed用法总结 | donkeyears&#39;s blog site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="sed用法总结1. 简介sed是一种流编辑器，非交互式。sed将要处理的文件以行为单位读入；将此行放入临时缓冲区；在缓冲区对流副本进行编辑；编辑后将结果送到标注输出。 2. 使用方法首先定位要处理的行（定址），再操作（命令，选项），遵照正则表达式规则模糊搜索 sed [address[,address]][!]{cmd}  定址 sed选定要处理的行，由数字，正则，或二者结合确定。默认全部行 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sed用法总结">
+<meta property="og:url" content="http://donkeyears.github.io/2019/03/09/note/sed用法总结/index.html">
+<meta property="og:site_name" content="donkeyears&#39;s blog site">
+<meta property="og:description" content="sed用法总结1. 简介sed是一种流编辑器，非交互式。sed将要处理的文件以行为单位读入；将此行放入临时缓冲区；在缓冲区对流副本进行编辑；编辑后将结果送到标注输出。 2. 使用方法首先定位要处理的行（定址），再操作（命令，选项），遵照正则表达式规则模糊搜索 sed [address[,address]][!]{cmd}  定址 sed选定要处理的行，由数字，正则，或二者结合确定。默认全部行 12">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-09T12:25:31.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sed用法总结">
+<meta name="twitter:description" content="sed用法总结1. 简介sed是一种流编辑器，非交互式。sed将要处理的文件以行为单位读入；将此行放入临时缓冲区；在缓冲区对流副本进行编辑；编辑后将结果送到标注输出。 2. 使用方法首先定位要处理的行（定址），再操作（命令，选项），遵照正则表达式规则模糊搜索 sed [address[,address]][!]{cmd}  定址 sed选定要处理的行，由数字，正则，或二者结合确定。默认全部行 12">
+  
+    <link rel="alternate" href="/atom.xml" title="donkeyears&#39;s blog site" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">donkeyears&#39;s blog site</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Practice makes perfect</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://donkeyears.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-note/sed用法总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/09/note/sed用法总结/" class="article-date">
+  <time datetime="2019-03-09T11:09:32.304Z" itemprop="datePublished">2019-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sed用法总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="sed用法总结"><a href="#sed用法总结" class="headerlink" title="sed用法总结"></a>sed用法总结</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>sed是一种流编辑器，非交互式。sed将要处理的文件以行为单位读入；将此行放入临时缓冲区；在缓冲区对流副本进行编辑；编辑后将结果送到标注输出。</p>
+<h2 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2. 使用方法"></a>2. 使用方法</h2><p>首先定位要处理的行（定址），再操作（命令，选项），遵照正则表达式规则模糊搜索</p>
+<p><strong>sed [address[,address]][!]{cmd}</strong></p>
+<ol>
+<li><p>定址</p>
+<p>sed选定要处理的行，由数字，正则，或二者结合确定。默认全部行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -n &apos;2p&apos;  file	# 打印（p）第二行（2） 且输出处理行（-n）</span><br><span class="line">sed -n &apos;100,200p&apos;	# 100-200行</span><br><span class="line">sed &apos;/my/,10d&apos;		# 删除（d）包含my的行（/my/）到10行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i 行之前插入，a 行之后插入。</span><br><span class="line">c 替换行，s 替换字符串</span><br><span class="line">d 行删除</span><br><span class="line">p 行打印</span><br><span class="line">g 行内全局替换</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-n 取消默认全部行输出，仅输出处理行</span><br><span class="line">-e 多项编辑，按顺序依次处理</span><br><span class="line">-f 指定输出文件</span><br><span class="line">-i 直接改动文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正则表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">^ 行首 $ 行尾</span><br><span class="line">. 换行之外任意字符。 * 0个或任意  x\&#123;m,n\&#125; m-n个x </span><br><span class="line">[a,b] 指定字符组a或b，[^a] 非a字符</span><br><span class="line">\(...\) 将括号内保存为标签。</span><br><span class="line">sed -n ‘1,20/\(your\)self/\1/g 将yourself替换为your</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p><a href="https://coolshell.cn/articles/9104.html" target="_blank" rel="noopener">sed 简明教程，实例多</a></p>
+<p><a href="https://www.cnblogs.com/edwardlost/archive/2010/09/17/1829145.html" target="_blank" rel="noopener">sed 语法简介</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/03/09/note/sed用法总结/" data-id="ck2abxfw2000d3aqg4ncnkumf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/09/note/expect usage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          expect usage
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/11/note/markdown语法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">markdown语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/28/note/README/">README</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/21/markdown-help/">markdown-help</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 donkeyears<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

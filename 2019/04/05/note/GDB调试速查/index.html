@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>GDB调试速查 | donkeyears&#39;s blog site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GDB调试速查本文源于CSDN 陈皓。为了方便查询，根据自己理解简写方便查询。如需原文请看文末链接原文。 使用GDB编译时添加-g参数。 启动方法；  gdb prog Gdb prog core Gdb prog PID  gdb 命令gdb 命令可以不敲完全，敲打前几个字符也可以。且tab二次可以推荐输入。 gdb&amp;gt; shell command 执行shell命令。也可在gdb中直接使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GDB调试速查">
+<meta property="og:url" content="http://donkeyears.github.io/2019/04/05/note/GDB调试速查/index.html">
+<meta property="og:site_name" content="donkeyears&#39;s blog site">
+<meta property="og:description" content="GDB调试速查本文源于CSDN 陈皓。为了方便查询，根据自己理解简写方便查询。如需原文请看文末链接原文。 使用GDB编译时添加-g参数。 启动方法；  gdb prog Gdb prog core Gdb prog PID  gdb 命令gdb 命令可以不敲完全，敲打前几个字符也可以。且tab二次可以推荐输入。 gdb&amp;gt; shell command 执行shell命令。也可在gdb中直接使用">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-10T10:06:45.681Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GDB调试速查">
+<meta name="twitter:description" content="GDB调试速查本文源于CSDN 陈皓。为了方便查询，根据自己理解简写方便查询。如需原文请看文末链接原文。 使用GDB编译时添加-g参数。 启动方法；  gdb prog Gdb prog core Gdb prog PID  gdb 命令gdb 命令可以不敲完全，敲打前几个字符也可以。且tab二次可以推荐输入。 gdb&amp;gt; shell command 执行shell命令。也可在gdb中直接使用">
+  
+    <link rel="alternate" href="/atom.xml" title="donkeyears&#39;s blog site" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">donkeyears&#39;s blog site</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Practice makes perfect</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://donkeyears.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-note/GDB调试速查" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/05/note/GDB调试速查/" class="article-date">
+  <time datetime="2019-04-05T15:37:39.118Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      GDB调试速查
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="GDB调试速查"><a href="#GDB调试速查" class="headerlink" title="GDB调试速查"></a>GDB调试速查</h1><p>本文源于CSDN 陈皓。为了方便查询，根据自己理解简写方便查询。如需原文请看文末链接原文。</p>
+<h2 id="使用GDB"><a href="#使用GDB" class="headerlink" title="使用GDB"></a>使用GDB</h2><p>编译时添加-g参数。</p>
+<p>启动方法；</p>
+<blockquote>
+<p>gdb prog</p>
+<p>Gdb prog core</p>
+<p>Gdb prog PID</p>
+</blockquote>
+<h2 id="gdb-命令"><a href="#gdb-命令" class="headerlink" title="gdb 命令"></a>gdb 命令</h2><p>gdb 命令可以不敲完全，敲打前几个字符也可以。且tab二次可以推荐输入。</p>
+<p>gdb&gt; shell command 执行shell命令。也可在gdb中直接使用make命令。</p>
+<h3 id="gdb中运行程序"><a href="#gdb中运行程序" class="headerlink" title="gdb中运行程序"></a>gdb中运行程序</h3><p>run之前可以：</p>
+<ol>
+<li>set args 指定运行参数。show args查看参数。如gdb proga。其中正常运行时proga -f a.cpp.那么在gdb里可以”set args -f a.cpp” 然后再run就好了。</li>
+<li>path dir 设定运行路径。 show paths。set env var=value 设定环境变量。show env 查看环境变量</li>
+<li>cd pwd</li>
+<li>info terminal</li>
+</ol>
+<p>调试已运行程序。1. 查看pid开始前加上。2. 在gdb中attach。</p>
+<h3 id="暂停程序。"><a href="#暂停程序。" class="headerlink" title="暂停程序。"></a>暂停程序。</h3><ol>
+<li><p>断点 BreakPoints</p>
+<blockquote>
+<p>b     154</p>
+<p>b     +5/-5         #当前行号前后停止</p>
+<p>break a.cpp:144</p>
+<p>b     b.cpp:main()</p>
+<p>b    *addr</p>
+<p>b    if i=100</p>
+<p>info b 2         #查看二号断点</p>
+</blockquote>
+</li>
+<li><p>观察点 WatchPoint</p>
+<p>观察点只在scope内有效。出了范围就会自动删除。7.4之后有watch -l可以增加有效期。否则观察地址解决。</p>
+<blockquote>
+<p>watch expr     #表达式expr<strong><em>变化</em></strong>时停住。</p>
+<p>rwatch expr    #表达式（变量）被<strong><em>读取</em></strong>时停住</p>
+<p>awatch expr    #表达式被<strong>读/写</strong>时停止</p>
+<p>info watch </p>
+</blockquote>
+</li>
+<li><p>捕捉点 CatchPoint<br>捕捉点捕获程序运行事件(载入库，异常..)</p>
+<blockquote>
+<p>gdb&gt;catch event     #event 可以是 throw，catch，exec/fork/(系统调用，目前仅在HP-UX)，load libname，unload libname。</p>
+<p>gdb&gt; twatch        #只设置一次捕捉点。过后清除</p>
+</blockquote>
+</li>
+<li><p>维护停止点</p>
+<blockquote>
+<p>clear     #清除  clear funa;  clear a.cpp:funa clear 145</p>
+<p>delete n #删除 第n个断点。可多个一起，可范围2-7</p>
+<p>disable n #暂停断点</p>
+<p>enable n #重新开始</p>
+<p>enable n once # 重新打开断点<strong>一次</strong> </p>
+</blockquote>
+</li>
+<li><p>停止条件维护</p>
+<p>b w可以带if条件。这个条件可以用condition修改</p>
+<blockquote>
+<p>condition n expr #将第n个断点条件修改为expr</p>
+<p>cond n     #清除断点条件</p>
+<p>ignore n     #忽略断点n条件x次。</p>
+</blockquote>
+</li>
+<li><p>为停止点设定运行命令</p>
+<p>断点停住后执行命令格式为 commands n…. end</p>
+<blockquote>
+<p>break foo if x&gt;0</p>
+<p><strong>commands</strong></p>
+<p>printf “x is d% /n”,x</p>
+<p>continue</p>
+<p><strong>end</strong></p>
+</blockquote>
+</li>
+<li><p>断点菜单 用于函数重载时，gdb提示具体在哪个函数断点。</p>
+</li>
+<li><p>恢复 </p>
+<blockquote>
+<p>continue 3 #继续并忽略之后三个断点。</p>
+<p>step #step in</p>
+<p>next # step over</p>
+<p>finish # 运行完函数并打印返回时堆栈地址和return值</p>
+</blockquote>
+</li>
+<li><p>信号</p>
+<blockquote>
+<p>handle SIGINT stop     收到信号停止。handle sig action</p>
+</blockquote>
+</li>
+<li><p>线程</p>
+<blockquote>
+<p>info threads  #查看线程ID</p>
+<p>b 145 thread 5</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="查看堆栈信息。"><a href="#查看堆栈信息。" class="headerlink" title="查看堆栈信息。"></a>查看堆栈信息。</h3><blockquote>
+<p>bt/backtrace #查看堆栈信息。</p>
+<p>bt 2 # 只查看上两层堆栈。</p>
+<p>frame 2 # 跳到第2层（0开始）</p>
+<p>frame #当前栈内容</p>
+<p>info frame</p>
+<p>info args</p>
+<p>info locals</p>
+</blockquote>
+<ul>
+<li><p>查看源代码</p>
+<blockquote>
+<p>list 145/funca</p>
+<p>list #显示之后的程序。 list - 显示之前的程序</p>
+<p>list beg，end  </p>
+</blockquote>
+</li>
+<li><p>搜索源代码 search regexp</p>
+</li>
+<li><p>指定源码路径。 dir ./source/a.cpp</p>
+</li>
+<li><p>查看源码内存。</p>
+<blockquote>
+<p>info line test.c:func #显示代码片段内存地址。</p>
+<p>disassemble func #显示函数的汇编</p>
+</blockquote>
+</li>
+<li><p>查看运行时变量</p>
+</li>
+</ul>
+<p>有时编译会优化，所以个别内存无法访问也也正常。</p>
+<blockquote>
+<p>print /f expr # 以f格式输出expr</p>
+<p>p ‘a.c’::x    # 某个文件中变量</p>
+<p>p *array@len #显示动态数组。</p>
+</blockquote>
+<ul>
+<li><p>数据输出格式f </p>
+<blockquote>
+<p>x 16进制 d十进制 u十六进制无符号 o八进制 t二进制 c字符格式 f浮点数格式</p>
+</blockquote>
+</li>
+<li><p>查看内存examine/x</p>
+</li>
+</ul>
+<blockquote>
+<p>x /nfu addr</p>
+<p>n f u 为可选参数。 </p>
+<p>n 为正整数，显示几个地址</p>
+<p>f 显示格式。参见上边f</p>
+<p>u 请求字节数 b单字节 h双字节，w四字节 g八字节</p>
+<p>x/3uh 0x54320 # 从0x54320 开始双字节（h）为单位读取三个单位，u十六进制无符号显示</p>
+</blockquote>
+<ul>
+<li><p>自动显示</p>
+<blockquote>
+<p>display /fmt expr #fmt 为格式</p>
+<p>undisplay n</p>
+<p>delete display n</p>
+<p>disable/enable/info display</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="设置显示项-略"><a href="#设置显示项-略" class="headerlink" title="设置显示项 略"></a>设置显示项 略</h3><h3 id="GDB环境变量-略"><a href="#GDB环境变量-略" class="headerlink" title="GDB环境变量 略"></a>GDB环境变量 略</h3><h3 id="查看寄存器"><a href="#查看寄存器" class="headerlink" title="查看寄存器"></a>查看寄存器</h3><blockquote>
+<p>info registers</p>
+</blockquote>
+<h3 id="改变程序运行"><a href="#改变程序运行" class="headerlink" title="改变程序运行"></a>改变程序运行</h3><ol>
+<li>修改变量。print x=4 #修改变量x为4</li>
+<li>跳转执行 jump file:line </li>
+<li>产生信号量</li>
+<li>强制函数返回</li>
+<li>强制调用函数。</li>
+</ol>
+<blockquote>
+<ol>
+<li><a href="https://blog.csdn.net/haoel/article/details/2879" target="_blank" rel="noopener">用GDB调试程序一,简介入门</a></li>
+<li><a href="https://blog.csdn.net/haoel/article/details/2880" target="_blank" rel="noopener">二 断点类型</a></li>
+<li><a href="https://blog.csdn.net/haoel/article/details/2881" target="_blank" rel="noopener">三断点的维护</a></li>
+<li><a href="https://blog.csdn.net/haoel/article/details/2882" target="_blank" rel="noopener">四查看栈信息</a></li>
+<li><a href="https://blog.csdn.net/haoel/article/details/2883" target="_blank" rel="noopener">五运行时数据</a></li>
+<li></li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/04/05/note/GDB调试速查/" data-id="ck2abxfvo00013aqghno8ewkf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/06/note/汇编简介/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          汇编简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/01/note/线程锁/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">线程锁</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/28/note/README/">README</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/21/markdown-help/">markdown-help</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 donkeyears<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

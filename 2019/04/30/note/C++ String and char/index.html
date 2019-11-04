@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>C++ String and char | donkeyears&#39;s blog site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="C++字符串与字符数组4种字符串 string:类，可动态拓展。可+ char*：指向字符串的指针（首字母） const char* ：不能通过指针对字符串修改。char* const 指针不能改。 char[]：字符数组。  1234char* a=&amp;quot;string1&amp;quot;;// a char型指针，可修改a。	a指向内存有时可写有时不行。看等号右边char b[]=&amp;quot;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ String and char">
+<meta property="og:url" content="http://donkeyears.github.io/2019/04/30/note/C++ String and char/index.html">
+<meta property="og:site_name" content="donkeyears&#39;s blog site">
+<meta property="og:description" content="C++字符串与字符数组4种字符串 string:类，可动态拓展。可+ char*：指向字符串的指针（首字母） const char* ：不能通过指针对字符串修改。char* const 指针不能改。 char[]：字符数组。  1234char* a=&amp;quot;string1&amp;quot;;// a char型指针，可修改a。	a指向内存有时可写有时不行。看等号右边char b[]=&amp;quot;s">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-05T08:59:24.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ String and char">
+<meta name="twitter:description" content="C++字符串与字符数组4种字符串 string:类，可动态拓展。可+ char*：指向字符串的指针（首字母） const char* ：不能通过指针对字符串修改。char* const 指针不能改。 char[]：字符数组。  1234char* a=&amp;quot;string1&amp;quot;;// a char型指针，可修改a。	a指向内存有时可写有时不行。看等号右边char b[]=&amp;quot;s">
+  
+    <link rel="alternate" href="/atom.xml" title="donkeyears&#39;s blog site" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">donkeyears&#39;s blog site</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Practice makes perfect</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://donkeyears.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-note/C++ String and char" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/30/note/C++ String and char/" class="article-date">
+  <time datetime="2019-04-30T03:00:14.232Z" itemprop="datePublished">2019-04-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++ String and char
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-字符串与字符数组"><a href="#C-字符串与字符数组" class="headerlink" title="C++字符串与字符数组"></a>C++字符串与字符数组</h1><h2 id="4种字符串"><a href="#4种字符串" class="headerlink" title="4种字符串"></a>4种字符串</h2><ol>
+<li>string:类，可动态拓展。可+</li>
+<li>char*：指向字符串的指针（首字母）</li>
+<li>const char* ：不能通过指针对<strong>字符串</strong>修改。char* const 指针不能改。</li>
+<li>char[]：字符数组。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char* a=&quot;string1&quot;;// a char型指针，可修改a。	a指向内存有时可写有时不行。看等号右边</span><br><span class="line">char b[]=&quot;string2&quot;;//b 数组名字，不可修改b的值。b指向内存可读写。</span><br><span class="line">//“string1”是内存中一块固定常量，不可修改。a目前指向常量故不可以修改。如果a=b，然后a指向的内存就可以修改了</span><br><span class="line">// a可以指向字符串常量如“string”，也可以指向字符串变量如b。指向类型决定可否写。</span><br></pre></td></tr></table></figure>
+
+<p>char* a a指向常量区的字符串“string”</p>
+<p>char[] b 栈区分配一个字符数组。</p>
+<p>char* a=“string” 不严谨，因为容易给a赋值，此时会崩溃。所以推荐用const char* a</p>
+<p><strong><em>作为形参，a，b均为字符串指针。</em></strong></p>
+<p>const char* 指向不能改。char[]  char* const 指针不能改。</p>
+<p>const char* 变成char* 很难。需要cast</p>
+<h2 id="string-，char-，const-char-，char-转换"><a href="#string-，char-，const-char-，char-转换" class="headerlink" title="string ，char* ，const char* ，char[] 转换"></a>string ，char* ，const char* ，char[] 转换</h2><h3 id="转换表格"><a href="#转换表格" class="headerlink" title="转换表格"></a>转换表格</h3><table>
+<thead>
+<tr>
+<th>目标⬇️源头➡️</th>
+<th>string a=”hi”</th>
+<th>char* b=”hi”</th>
+<th>const char* c=”hi”</th>
+<th>char d []=”hi”</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>string a</td>
+<td>NULL</td>
+<td>a=b</td>
+<td>a=c</td>
+<td>a=b</td>
+</tr>
+<tr>
+<td>Char* b</td>
+<td>c=a.c_str  b=b=const_cast&lt;char*&gt;c</td>
+<td>NULL</td>
+<td>b=const_cast&lt;char*&gt;c</td>
+<td>b=d</td>
+</tr>
+<tr>
+<td>const char* c</td>
+<td>c=a.c_str()  c=a.data() a.copy(c,size,0)</td>
+<td>c=b</td>
+<td>NULL</td>
+<td>c=d</td>
+</tr>
+<tr>
+<td>char d []  const指针</td>
+<td>strcpy()</td>
+<td>strcpy</td>
+<td>strcpy</td>
+<td>NULL</td>
+</tr>
+</tbody></table>
+<ol>
+<li>成为string。直接赋值</li>
+<li>成为const char* 直接赋值（除了string）</li>
+<li>成为char d[] strncpy      因为这是一个指针常量，指针不能赋值。指针内容可以copy</li>
+<li>char[] 成为其它，直接赋值。</li>
+<li>成为char* 需要转为constchar* 再强转。 char*p=（char *）str.c_str().</li>
+<li>Str.c_str 带\0     str.data() 不带</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一定要使用strcpy()函数等来操作方法c_str()返回的指针 </span></span><br><span class="line"><span class="comment">//比如：最好不要这样: </span></span><br><span class="line"><span class="keyword">char</span>* c; </span><br><span class="line"><span class="built_in">string</span> s=<span class="string">"1234"</span>; </span><br><span class="line">c = s.c_str(); <span class="comment">//c最后指向的内容是垃圾，**因为s对象被析构**，其内容被处理</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//应该这样用： </span></span><br><span class="line"><span class="keyword">char</span> c[<span class="number">20</span>]; </span><br><span class="line"><span class="built_in">string</span> s=<span class="string">"1234"</span>; </span><br><span class="line"><span class="built_in">strcpy</span>(c,s.c_str()); </span><br><span class="line"><span class="comment">//这样才不会出错，c_str()返回的是一个临时指针，不能对其进行操作</span></span><br></pre></td></tr></table></figure>
+
+<p>参考</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/ksws0292756/article/details/79432329" target="_blank" rel="noopener">表格比较好</a></p>
+<p><a href="https://blog.csdn.net/hebbely/article/details/79577880" target="_blank" rel="noopener">例子比较好</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/04/30/note/C++ String and char/" data-id="ck2katuh40000nbqgzy7tsrsa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/06/note/Oauth2.0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Oauth2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/06/note/汇编简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">汇编简介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/28/note/README/">README</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/21/markdown-help/">markdown-help</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 donkeyears<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

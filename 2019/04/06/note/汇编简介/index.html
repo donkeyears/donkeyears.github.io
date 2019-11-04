@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>汇编简介 | donkeyears&#39;s blog site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="汇编简介CPU执行代码cpu=CU+ALU，cu负责控制，读取指令。ALU负责运算，进行数据运算。 指令使用过程：取指；解码；读存储；执行；写存储；PC指令计数器+1 变量都放在内存中。使用时，读取；执行；存储。 指令分类：运算逻辑（ADD(rc,ra,rb)，ADDC()）；存取内存，条件。 1234567891011121314151617181920212223//在实际存储时，目标寄存器在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编简介">
+<meta property="og:url" content="http://donkeyears.github.io/2019/04/06/note/汇编简介/index.html">
+<meta property="og:site_name" content="donkeyears&#39;s blog site">
+<meta property="og:description" content="汇编简介CPU执行代码cpu=CU+ALU，cu负责控制，读取指令。ALU负责运算，进行数据运算。 指令使用过程：取指；解码；读存储；执行；写存储；PC指令计数器+1 变量都放在内存中。使用时，读取；执行；存储。 指令分类：运算逻辑（ADD(rc,ra,rb)，ADDC()）；存取内存，条件。 1234567891011121314151617181920212223//在实际存储时，目标寄存器在">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-07T08:32:36.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="汇编简介">
+<meta name="twitter:description" content="汇编简介CPU执行代码cpu=CU+ALU，cu负责控制，读取指令。ALU负责运算，进行数据运算。 指令使用过程：取指；解码；读存储；执行；写存储；PC指令计数器+1 变量都放在内存中。使用时，读取；执行；存储。 指令分类：运算逻辑（ADD(rc,ra,rb)，ADDC()）；存取内存，条件。 1234567891011121314151617181920212223//在实际存储时，目标寄存器在">
+  
+    <link rel="alternate" href="/atom.xml" title="donkeyears&#39;s blog site" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">donkeyears&#39;s blog site</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Practice makes perfect</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://donkeyears.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-note/汇编简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/06/note/汇编简介/" class="article-date">
+  <time datetime="2019-04-06T08:30:06.662Z" itemprop="datePublished">2019-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      汇编简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="汇编简介"><a href="#汇编简介" class="headerlink" title="汇编简介"></a>汇编简介</h1><h2 id="CPU执行代码"><a href="#CPU执行代码" class="headerlink" title="CPU执行代码"></a>CPU执行代码</h2><p>cpu=CU+ALU，cu负责控制，读取指令。ALU负责运算，进行数据运算。</p>
+<p>指令使用过程：取指；解码；读存储；执行；写存储；PC指令计数器+1</p>
+<p>变量都放在内存中。使用时，读取；执行；存储。</p>
+<p>指令分类：运算逻辑（ADD(rc,ra,rb)，ADDC()）；存取内存，条件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//在实际存储时，目标寄存器在oprd后。但写成命令在最后。就是这儿rc</span><br><span class="line">//运算指令</span><br><span class="line">ADD(ra,rb,rc)，reg[rc]&lt;- reg[a]+reg[b]</span><br><span class="line">ADDC(ra,const,rc), reg[rc]&lt;-reg[a]+sext(const)</span><br><span class="line">//存取指令</span><br><span class="line">LD(ra,const,rc) reg[rc]&lt;- mem[reg[a]+sext(const)] </span><br><span class="line">示例 R0&lt;-mem[0x1008] 翻译成指令 LD(R31,0x1008,R0)  因为R31一直为0</span><br><span class="line">ST(rc,const,ra) store  mem[reg[ra]+sext(const)]&lt;-reg[rc]  唯一rc为src dir的。</span><br><span class="line">//分支指令 BEQ branch equal</span><br><span class="line">BEQ(ra,offset,rc)&lt;=&gt;  //ra为条件结果。rc临时存放PC+4 下一指令地址</span><br><span class="line">NPC&lt;-PC+4</span><br><span class="line">Reg[rc]&lt;-NPC</span><br><span class="line">if(reg[ra]=0)</span><br><span class="line">	PC&lt;- NPC+4*offset</span><br><span class="line">else</span><br><span class="line">	PC&lt;- NPC</span><br><span class="line">	</span><br><span class="line">JMP(ra,rc)&lt;=&gt; reg[rc]&lt;- PC+4 	PC&lt;-reg[ra]  //ra 为跳转到的，rc为临时下一指令地址	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">0x100 BEQ(r31,sqrt,r28) //r31为0，一定跳转到sqrt r28存放下条指令地址PC+4  0x104</span><br><span class="line">0x678 BEQ(r31,sqrt,r28) // r28=0x67c。</span><br><span class="line">sqrt：。。。。。JMP(R28,R32) //跳转会r28即下一条指令。而这个函数下一条rc无人关心。</span><br></pre></td></tr></table></figure>
+
+<p>通过指令分析发现，50%用到运算；80%用到条件；25%用到存取内存</p>
+<h2 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h2><p>代码指令存储</p>
+<ul>
+<li><p>指令格式</p>
+<ul>
+<li>1:opcode    |rc    |ra    |rb    |unused</li>
+<li>2:opcode    |rc    |ra    |16bits const</li>
+</ul>
+<p>ALU 指令读取两个寄存器或一个寄存器加const。</p>
+<p>读取与存储，使用指令2</p>
+<p>分支，跳转：使用指令2</p>
+<p>100000|00100|00010|00011|00000000000</p>
+<p>opcode|rc      |ra    |rb         | unused</p>
+<p>rc&lt;ra+rb</p>
+</li>
+<li><p>汇编四部分</p>
+<ul>
+<li>符号：值的代号，比如12代号N</li>
+<li>变量：值或者表达式</li>
+<li>标签：地址代号。</li>
+<li>宏：替换宏</li>
+</ul>
+</li>
+<li><p>高级语言汇编</p>
+<ul>
+<li>解释执行与编译执行。</li>
+<li>程序分为，语句，语句段，条件，循环。</li>
+<li>compile_expr(expr)</li>
+<li>把表达式一步步拆分，拆分完后转为机器码在组合起来。</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数堆栈。"><a href="#函数堆栈。" class="headerlink" title="函数堆栈。"></a>函数堆栈。</h2><p>函数包含：入口名称，参数，本地临时变量 1.2在主函数执行，3在被调函数执行</p>
+<ol>
+<li>传送参数变量到R1；</li>
+<li>传送返回地址到R28</li>
+<li>返回值写入R0 </li>
+</ol>
+<p>但是由于变量没存，会被覆盖。所以需要堆栈。</p>
+<p>R29 SP存储堆栈指针。SP指向下一个没被分配的堆栈指针。</p>
+<p>PUSH POP是操作的Memory。PUSH(x): SP动1，x存入内存</p>
+<p>以下操作在内存中</p>
+<p>函数caller需要做：</p>
+<ol>
+<li>保存参数 push</li>
+<li>跳转并保存返回地址 LP</li>
+<li>清空保存的参数。</li>
+</ol>
+<p>caller需要做：保存结果到R0</p>
+<ol>
+<li>保存返回地址LP。push LP</li>
+<li>BP本堆栈的底地址 PUSH  BP</li>
+<li>push需要的临时变量和寄存器</li>
+</ol>
+<p>callee查找第j个参数 BP-4*(j+3) 第一个参数BP-12</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">caller:</span><br><span class="line">PUSH(args)	//存参数</span><br><span class="line">BR(fun,LP)	// 跳转，保存返回地址</span><br><span class="line">delocate() //释放内存</span><br><span class="line"></span><br><span class="line">callee</span><br><span class="line">fun  标签</span><br><span class="line">PUSH(LP)// 返回地址</span><br><span class="line">PUSH(Bp)//保存返回基地址</span><br><span class="line">MOVE(SP,BP)// 设定BP</span><br><span class="line">PUSH(R1) //保存寄存器结果，后边重置。保存上层的现场。</span><br><span class="line">alloc //释放内存</span><br><span class="line">。。。</span><br><span class="line">POP(R1)</span><br><span class="line">MOVE(BP,SP)//方便一次性清空本地的变量</span><br><span class="line">POP(BP)</span><br><span class="line">pop(LP)</span><br><span class="line">JMP(LP)</span><br></pre></td></tr></table></figure>
+
+<p>Caller调用三个。callee被调，开始四个，返回五个。</p>
+<p>BP始终指向上一个BP的下一位。SP指向下一条执行的堆栈位置。由BP-4的值可以得到上层BP。LP()</p>
+<p>上表是在汇编指令中存储位置。在运行堆栈中 args，LP，BP，R1 是一个active record。此处R1是保存现场的。在执行完后会有POP r1 去恢复现场。</p>
+<h3 id="intel-cpu实例中的区别"><a href="#intel-cpu实例中的区别" class="headerlink" title="intel cpu实例中的区别"></a>intel cpu实例中的区别</h3><p>在intel cpu linux汇编中。貌似没有delocate和LP的操作。所以少了些东西</p>
+<p>同样多了一些subl $24 ,%esp 是为了让esp先推算下移一定地方。这样在生成临时变量时就是用加法而不是减法了。</p>
+<p>通用寄存器：AX累加寄存器，BX基址寄存器，CX计数寄存器，DX数据寄存器</p>
+<p>SP堆栈指针，BP基址指针寄存器，SI源变址寄存器，DI目的变址寄存器</p>
+<blockquote>
+<ul>
+<li>每个寄存器的用途并不是单一的。</li>
+<li>%rax 通常用于存储函数调用的返回结果，同时也用于乘法和除法指令中。在imul 指令中，两个64位的乘法最多会产生128位的结果，需要 %rax 与 %rdx 共同存储乘法结果，在div 指令中被除数是128 位的，同样需要%rax 与 %rdx 共同存储被除数。</li>
+<li>%rsp 是堆栈指针寄存器，通常会指向栈顶位置，堆栈的 pop 和push 操作就是通过改变 %rsp 的值即移动堆栈指针的位置来实现的。</li>
+<li>%rbp 是栈帧指针，用于标识当前栈帧的起始位置</li>
+<li>%rdi, %rsi, %rdx, %rcx,%r8, %r9 六个寄存器用于存储函数调用时的6个参数（如果有6个或6个以上参数的话）。</li>
+<li>被标识为 “miscellaneous registers” 的寄存器，属于通用性更为广泛的寄存器，编译器或汇编程序可以根据需要存储任何数据。</li>
+</ul>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.youtube.com/watch?v=-AWBts5IBBM" target="_blank" rel="noopener">L09 汇编指令</a></p>
+<p><a href="https://www.youtube.com/watch?v=LbptX5Ac74s" target="_blank" rel="noopener">MIT 6.004 L10: Assembly Language and compilers</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/27339191" target="_blank" rel="noopener">一个根据gcc的介绍</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/04/06/note/汇编简介/" data-id="ck2abxfwe000h3aqg2320wo2h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/30/note/C++ String and char/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          C++ String and char
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/05/note/GDB调试速查/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">GDB调试速查</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/28/note/README/">README</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/21/markdown-help/">markdown-help</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 donkeyears<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

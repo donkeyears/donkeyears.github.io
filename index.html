@@ -239,7 +239,453 @@
 
 
   
+    <article id="post-note/hexo博客搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/20/note/hexo博客搭建/" class="article-date">
+  <time datetime="2019-10-20T06:48:41.561Z" itemprop="datePublished">2019-10-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#搭建hexo博客</p>
+<h2 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1. 安装Node.js"></a>1. 安装Node.js</h2><h3 id="nvm-安装"><a href="#nvm-安装" class="headerlink" title="nvm 安装"></a>nvm 安装</h3><p>nvm负责管理不同版本的Node.js， npm负责管理nodejs的第三方库文件。</p>
+<p>Node.js 很大，有版本不同。这时候nvm就是一个管理不同版本的东西。nvm可以管理本地的nvm。nvm会安装在本地home目录。</p>
+<blockquote>
+<p>curl -o- <a href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh</a> | bash</p>
+<p>Or</p>
+<p>wget -qO- <a href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh</a> | bash</p>
+</blockquote>
+<h3 id="node安装"><a href="#node安装" class="headerlink" title="node安装"></a>node安装</h3><blockquote>
+<p>nvm install node</p>
+</blockquote>
+<h2 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2. 安装hexo"></a>2. 安装hexo</h2><p>hexo是node里的一个模块。使用它来搭建博客。</p>
+<blockquote>
+<p>npm install -g hexo-cli  # -g为安装全局模块。默认只安装到当前目录。只有当前目录可用。</p>
+</blockquote>
+<h3 id="npm-install-简介"><a href="#npm-install-简介" class="headerlink" title="npm install 简介"></a>npm install 简介</h3><p>npm install 没有参数会根据当前目录下的package.json install。 </p>
+<p>npm install pack 安装某个包</p>
+<p>npm install -g package。全局安装某个包。</p>
+<h2 id="3-本地用hexo搭建博客"><a href="#3-本地用hexo搭建博客" class="headerlink" title="3. 本地用hexo搭建博客"></a>3. 本地用hexo搭建博客</h2><blockquote>
+</blockquote>
+<h2 id="4-github管理方案。"><a href="#4-github管理方案。" class="headerlink" title="4. github管理方案。"></a>4. github管理方案。</h2><p>github上分两个分支，一个master，一个hexo。 hexo分支负责保存各种改动命令。而master分支负责存放生成的网页。在_post目录再新建一个repo。这个repo里放笔记。笔记repo可以作为私有repo。而hubio则为共有的。可以访问的。</p>
+<h3 id="第一次生成网页"><a href="#第一次生成网页" class="headerlink" title="第一次生成网页"></a>第一次生成网页</h3><p>主要是安装hexo(其实安装hexo-cli也是一样)，hexo-deploy-git，package.json中的包。</p>
+<p>关键这次有hexo init。init后才安装需要的第三方包。会初始化本地的一些包。</p>
+<blockquote>
+<p>npm install hexo             # install hexo</p>
+<p>hexo init                 # init the folder for hexo. generate package.json</p>
+<p>npm install                 # update npm by package.json.</p>
+<p>npm install hexo-deployer-git # git plugin for deploy</p>
+</blockquote>
+<h3 id="clone全新代码后重新生成"><a href="#clone全新代码后重新生成" class="headerlink" title="clone全新代码后重新生成"></a>clone全新代码后重新生成</h3><p>重新安装hexo hexo-deploy-git。 第三方依赖包。</p>
+<blockquote>
+<p>npm install hexo</p>
+<p>npm install </p>
+<p>npm install hexo-deployer-git</p>
+</blockquote>
+<h3 id="日常更新操作"><a href="#日常更新操作" class="headerlink" title="日常更新操作"></a>日常更新操作</h3><ol>
+<li>在hexo分支进行更新markdown文档。</li>
+<li>使用hexo-deployer-git 将hexo分支生成网页并deploy到远程master分支。hexo为源文件，master为静态网页。hexo分支本地编辑。master分支由git插件更新。</li>
+<li>github io会自动同步master分支。</li>
+</ol>
+<h3 id="本地调试检查"><a href="#本地调试检查" class="headerlink" title="本地调试检查"></a>本地调试检查</h3><blockquote>
+<p>hexo generate # 根据本地markdown生成静态网页。</p>
+<p>hexo server # 本地<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 网页生成调试。</p>
+</blockquote>
+<h3 id="设置git账户。"><a href="#设置git账户。" class="headerlink" title="设置git账户。"></a>设置git账户。</h3><blockquote>
+<p>git config user.name “”</p>
+<p>git config user.email “”</p>
+</blockquote>
+<h2 id="4-一些常见问题"><a href="#4-一些常见问题" class="headerlink" title="4. 一些常见问题"></a>4. 一些常见问题</h2><h3 id="自动添加标题-hexo-enhancer。"><a href="#自动添加标题-hexo-enhancer。" class="headerlink" title="自动添加标题 hexo-enhancer。"></a>自动添加标题 hexo-enhancer。</h3><p>hexo需要使用”hexo new “title name”来生成文章的名字。如果批量转入markdown会导致显示“notitle”，此时可以使用hexo-enhancer这个插件自动生成文件post name。安装后，新生成的文件在deploy的时候就会自动添加文件名了。文件名自动转化为标题title。还可以自动生成cataogly等。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://hexo.io/zh-cn/docs/setup" target="_blank" rel="noopener">官方首页</a></p>
+<p><a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">使用hexo，换电脑后怎么更新博客</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/10/20/note/hexo博客搭建/" data-id="ck2abxfvz00093aqgdafvbmtx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-note/QOS quality of service" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/16/note/QOS quality of service/" class="article-date">
+  <time datetime="2019-10-16T14:17:55.366Z" itemprop="datePublished">2019-10-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="QOS-quality-of-service"><a href="#QOS-quality-of-service" class="headerlink" title="QOS quality of service"></a>QOS quality of service</h1><h2 id="qos"><a href="#qos" class="headerlink" title="qos"></a>qos</h2><p>重要数据优先级要高，持续的语音包会和突发的数据包冲突。语音视频对时间敏感。</p>
+<h2 id="1-bandwidith"><a href="#1-bandwidith" class="headerlink" title="1. bandwidith"></a>1. bandwidith</h2><p>带宽是整个传输路径上的带宽。</p>
+<p>Bmax=min（b1，b2，b3，。。。bn）整个路径的最小值。</p>
+<p>Bavail = Bmax/flows</p>
+<h2 id="2-packet-loss"><a href="#2-packet-loss" class="headerlink" title="2. packet loss"></a>2. packet loss</h2><p>路由器队列末尾丢包。很普通常见。</p>
+<h2 id="3-delay"><a href="#3-delay" class="headerlink" title="3 delay"></a>3 delay</h2><p>路由器导致的delay 处理时间+排队时间+序列化时间（转化为比特流）+前进时间（处理好出路由器）</p>
+<h2 id="4-jitter"><a href="#4-jitter" class="headerlink" title="4. jitter"></a>4. jitter</h2><p>delay导致到达时间不确定。导致抖动</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/10/16/note/QOS quality of service/" data-id="ck2abxfvt00053aqg2d4b51v7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-note/h264" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/09/note/h264/" class="article-date">
+  <time datetime="2019-10-09T12:33:34.667Z" itemprop="datePublished">2019-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/note/h264/">h264</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>h264 分为vlc层和nal层。vlc负责视频编码，nal负责网络封装。</p>
+<p>首先一个视频被分为许多帧。</p>
+<p>帧可以分为I,P,B 帧。而一个帧可以被分为多个SLICE。一个slice可以被分为多个Macro Block。</p>
+<p>NAl负责在网络中传输。可以用RTP传输。一个RTP包可以包含一个NAL，多个NAL或者一部分NAL。以RTP头中的type决定。类似于NAL中的type。1-23为单nal。23-27 为多个nal一个包。28.29 位一个nal分为多个包</p>
+<p>NAL 由nal头和EBSP组成。其中nal也可以不包含媒体信息，而是一些控制信息。</p>
+<p>EBSP（Encapsulate Byte Sequence Payload，扩展字节序列载荷）由RBSP+校验组成</p>
+<p>rbsp(Raw Byte Sequence Payload, 原始字节序列载荷)组成。RBSP是在原始字节流中加入结束字符和0以补齐子节。</p>
+<p>nal有个nal type决定了什么帧。如果1 非I帧。5 I帧。234为片分割成ABC三种类型（将一个片数据根据重要性分类。）。其他为其他用途ß</p>
+<p>帧分为片，片分为宏块MB。</p>
+<p>一幅图像由 1～N 个片组组成，而每一个片组又由一个或若干个片组成 一个片由一个NALU或三个NALU（假如有数据分割）组成。图像解码过程中总是按照片进行解码，然后按照片组将解码宏块重组成图像。从这种意义上讲，片实际是最大的解码单元。</p>
+<p><a href="https://github.com/babosa/Course/blob/master/%E6%B5%81%E5%AA%92%E4%BD%93%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E8%BF%9B%E9%98%B6(RTSP%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8)/h264%E5%9F%BA%E7%A1%80%E5%8F%8Artp%E5%88%86%E5%8C%85%E8%A7%A3%E5%8C%85.md" target="_blank" rel="noopener">rtp 分包</a></p>
+<p><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.594.6643&rep=rep1&type=pdf" target="_blank" rel="noopener">片分包文档，进入搜PD</a></p>
+<p><a href="http://gentlelogic.blogspot.com/2011/11/exploring-h264-part-2-h264-bitstream.html" target="_blank" rel="noopener">h264 bitstream</a></p>
+<p><a href="https://juejin.im/entry/5833dc86570c35006c22cfb1" target="_blank" rel="noopener">深入浅出理解视频编码 H264 结构</a></p>
+<p><a href="http://www.iosxxx.com/blog/2017-08-09-%E4%BB%8E%E9%9B%B6%E4%BA%86%E8%A7%A3H264%E7%BB%93%E6%9E%84.html" target="_blank" rel="noopener">从零了解H264结构</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/10/09/note/h264/" data-id="ck2abxfw2000c3aqglg9ukeid" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-note/十分钟经济学" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/08/note/十分钟经济学/" class="article-date">
+  <time datetime="2019-10-08T13:37:15.888Z" itemprop="datePublished">2019-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/note/十分钟经济学/">十分钟经济学</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="垄断"><a href="#垄断" class="headerlink" title="垄断"></a>垄断</h1><p>横向垄断，占有市场份额大。</p>
+<p>纵向垄断，产业链控制能力大</p>
+<p>专利是一种偏好的垄断。但有有效期。</p>
+<p>自然垄断：类似电力，一个国家三种电肯定不好用，这时候政府可以通过控制价格来管控。</p>
+<p>价格歧视：不同客户不同价格。比如双十一</p>
+<p>担心垄断的根源是担心价格制定的垄断。</p>
+<h1 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h1><p>两个对手可以定价格。如果都高都可以挣钱，但是对于一个人来说，他定低了就可以多挣钱，他会降价。另一个人也这么想。最后俩人价格都低了。</p>
+<h1 id="行为经济学"><a href="#行为经济学" class="headerlink" title="行为经济学"></a>行为经济学</h1><p>人并不是完全理性的。理性是在一定范围内的。</p>
+<p>原因：缺乏全面的信息。</p>
+<p>假设ab瓜分100刀。理性人任何提议都会同意，毕竟都拿到钱了。但是一般很难二人满意。</p>
+<p>心理价格</p>
+<p>失去的痛苦，比获得的喜悦更强烈。</p>
+<p>损失规避。人都会避免损失</p>
+<h1 id="劳动市场"><a href="#劳动市场" class="headerlink" title="劳动市场"></a>劳动市场</h1><h1 id="医疗经济学"><a href="#医疗经济学" class="headerlink" title="医疗经济学"></a>医疗经济学</h1><p>医疗体系效率：获取；费用；效率</p>
+<h1 id="税收"><a href="#税收" class="headerlink" title="税收"></a>税收</h1><p>政府提供服务资金</p>
+<p>分类：直接税，间接税</p>
+<p>直接税，如所得税，财产税</p>
+<p>间接税，增值税，营业税</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/10/08/note/十分钟经济学/" data-id="ck2abxfwd000f3aqg3vnxs6d6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-note/Vim学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/01/note/Vim学习/" class="article-date">
+  <time datetime="2019-07-01T08:23:30.273Z" itemprop="datePublished">2019-07-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/01/note/Vim学习/">Vim学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vim学习"><a href="#Vim学习" class="headerlink" title="Vim学习"></a>Vim学习</h1><h2 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h2><p>vim的目的就是快速的找到位置进行编辑修改，所以几十个命令用于移动。最常见的就是吓死新手的hjkl。换成你常用的鼠标或者键盘，如果在一个文件里，你要从第一行往下走，修改第50行。如果用键盘，你可以用按键下，page down，end 从小范围一行行到一页页的编辑。如果你想用鼠标，你可以滚动滚轮，你也可以拖动右侧的进度条。</p>
+<p>同样，vim对不同的粒度移动采用了不同的命令。只不过命令更细致，更有规律。最简单的是hjkl。</p>
+<blockquote>
+<p>Vi/Vim 中操作单位有很多，按从小到大的顺序为（括号内为相应的操作命令）：字符（h、l）→ 单词 (w、W、b、B、e) → 行 (j、k、0、^、美元符号、 :n) → <strong>句子（(、)）</strong>→ 段落（{、}）→ 屏 (H、M、L) → 页（Ctrl-f前页、Ctrl-b后页、Ctrl-u、Ctrl-d) → 文件（G、gg、:0、:$）。</p>
+</blockquote>
+<p>% 匹配括号，这个很有用</p>
+<p>所以你看，vim让你可以一个个字符移动，一行行移动，一段段移动，半页，一页，任意行，文件首尾，都可以。所以要明白，他们是不同的级别。你需求移动多少，然后再去确定命令。</p>
+<p><strong>先定单位再定量</strong> 在移动的时候，我们要先确认要移动多少，选定命令，然后利用数字去加快移动。毕竟移动10个单词，按十次w也是很累人的。先定移动w。在用10w。</p>
+<h3 id="vim中的单词"><a href="#vim中的单词" class="headerlink" title="vim中的单词"></a>vim中的单词</h3><p>vim中的单词是指用字母，数字，下划线三类字符组成的串。广义的单词则是通过空白字符分割（空格，tab，换行）</p>
+<h2 id="文本编辑"><a href="#文本编辑" class="headerlink" title="文本编辑"></a>文本编辑</h2><p>与移动一样，修改也有不同的粒度。</p>
+<blockquote>
+<p>与光标移动一样，Vi/Vim 中关于编辑操作的命令也比较多，但操作单位要比移动光标少得多。按从小到大的顺序为（括号内为相应的操作命令）：字符 （x、c、s、r、i、a）→ 单词 (cw、cW、cb、cB、dw、dW、db、dB) → 行 (dd、d0、d$、I、A、o、O) → 句子（(、)）→ 段落（{、}）。这些操作单位有些可以加操作次数。操作对象的范围计算公式为：操作范围 = 操作次数 * 操作单位。比如：d3w 命令删除三个单词，10dd 命令删除十行。</p>
+</blockquote>
+<p>x 删除一个字符。c更改并进入插入模式，s替换并进入插入模式，r替换但不进入插入模式。i光标后，a光标前。</p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>/  向后查找</p>
+<p>？向前查找</p>
+<p>‘*’向后查找当前单词</p>
+<p>‘#’ 向前搜索当前单词。</p>
+<p>n查找下一个</p>
+<p>N查找上一个</p>
+<p>忽略大小写，则在最后加入\c</p>
+<h2 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h2><p>替换其实需要先查找到。</p>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:&#123;作用范围&#125;s/&#123;被替换&#125;/&#123;替换成&#125;/&#123;替换标志&#125;</span><br></pre></td></tr></table></figure>
+
+<p>作用范围可以这样写：% 全局；5-12 5-12行；“.,+2” 当前到往后2行。<strong>不填默认当前行</strong></p>
+<p>替换标志：g 全局替换，<strong>不填则只替换光标下一个</strong> ，i大小写不敏感，I大小写敏感。等等略</p>
+<blockquote>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-tip-vim/" target="_blank" rel="noopener">ibm vim 效率原则，对于文件中移动讲解很棒</a></p>
+<p><a href="https://harttle.land/2016/08/08/vim-search-in-file.html" target="_blank" rel="noopener">vim 查找替换</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/07/01/note/Vim学习/" data-id="ck2abxfvs00043aqgro0j9zh5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-note/Kafka" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/26/note/Kafka/" class="article-date">
+  <time datetime="2019-06-26T10:46:10.028Z" itemprop="datePublished">2019-06-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/26/note/Kafka/">Kafka</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h1><h2 id="消息队列产生的需求"><a href="#消息队列产生的需求" class="headerlink" title="消息队列产生的需求"></a>消息队列产生的需求</h2><p>比如取快递，消费者和快递员都很忙，谁也不会等谁，那么就需要一个中间商(比如丰巢，菜鸟)来去缓存消息。快递员把快递放在丰巢，然后消费者有空的时候去取件。这样彼此都可以各忙各的。这个丰巢就是一个消息队列，快递员是生产者，消费者就是消费者。生产者在需要的时候把消息放在消息队列，生产者在空闲时去处理消息，消息被处理后就没了。当过期后也会被清理。</p>
+<p>好处：</p>
+<ol>
+<li>解耦：生产者消费者都不用等待对方</li>
+<li>异步：无需等待。</li>
+<li>削峰：消息队列可以处理多种类型消息。</li>
+</ol>
+<h3 id="消息队列模式"><a href="#消息队列模式" class="headerlink" title="消息队列模式"></a>消息队列模式</h3><ol>
+<li>点对点。消息队列收到消息后不处理，消费者主动去取。</li>
+<li>发布订阅：消息队列通知消费者取取。</li>
+</ol>
+<h2 id="Kafka-结构"><a href="#Kafka-结构" class="headerlink" title="Kafka 结构"></a>Kafka 结构</h2><h3 id="kafka架构及术语"><a href="#kafka架构及术语" class="headerlink" title="kafka架构及术语"></a>kafka架构及术语</h3><ol>
+<li>producer： 生产者，消息入口</li>
+<li>Broker： kafka的一个实例。</li>
+<li>topic：消息的主题。可以认为消息的分类。比如统计用户信息。</li>
+<li>Partition ：topic的分区，每个topic可以有多个分区，分区可以做负载，提高topic的吞吐。<strong>同一个topic在不同partition不重复</strong>， 比如100个消息，可以分成5个paritition分别取存储。这样可以5个线程分别去做。</li>
+<li>replication： 每一个分区都有多个副本，副本作用是做备胎，当主分区Leader故障，会从备胎Follower选择一个成为Leader。就是在不同的broker分别存放副本，提高可用性。</li>
+<li>Message：发送消息的主体。</li>
+<li>Consumer：消费者，消息出口</li>
+<li>consumer Group：多个消费者组成一个消费者组。同一个分区只能被一个消费者组中的一个消费者消费。一个消费者可以消费不同分区。</li>
+<li>ZooKeeper：保存集群元信息。保证可用性。</li>
+</ol>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><h3 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h3><p>生产者将要存的消息分别放入不同的分区。分区名为Topicname_partitionName. partition在物理上就是一个文件夹。</p>
+<p>每个分区partition由多个段 segment。每个segment大小恒定，但是里边消息数目不一定，因为消息大小在变。</p>
+<p>每个segment中是一个个的消息顺序存储。比如msg 1-100按顺序存下去。由于顺序存取机械硬盘速度比内存还快。这时高速的根源。</p>
+<p>每个segment有三个文件 .index .log    .timeindex三个文件。log存message。index存索引。文件名前边为segment中最小offset。比如第一个log存了msg 0-15. segment2中的log存了msg 16-50.那么log名字分别为 0.log   15.log 51.log .三个segment大小相等，log数字递增。这样后期查找可以先根据seg名字快速索引。</p>
+<h3 id="消费数据。"><a href="#消费数据。" class="headerlink" title="消费数据。"></a>消费数据。</h3><p>快速找到msg。 首先找到seg段，比如msg40就取第二个segment。然后从seg2 的index去寻找消息。seg2 index使用稀疏索引。就是索引只保存了 15，25，35，45的开始位置，那么我们从35开始找到文件，很快就找到了msg40.</p>
+<p>索引利用segment+有序offset+稀疏索引+二分查找+顺序查找。快速定位数据。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/b37beff657f3" target="_blank" rel="noopener">kafka 数据可靠性深度解读</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/68052232" target="_blank" rel="noopener">基本原理，再过半小时，你就能明白kafka的工作原理了</a></p>
+<p><a href="https://www.cnblogs.com/jasongj/p/7912348.html" target="_blank" rel="noopener">kafka 系列解析</a></p>
+<p><a href="https://www.infoq.cn/article/kafka-analysis-part-1" target="_blank" rel="noopener">kafka 架构介绍</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/06/26/note/Kafka/" data-id="ck2abxfvq00023aqglswh8vf4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-note/FFMpeg 笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/26/note/FFMpeg 笔记/" class="article-date">
+  <time datetime="2019-06-26T09:05:01.506Z" itemprop="datePublished">2019-06-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/26/note/FFMpeg 笔记/">FFMpeg 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="FFMpeg-笔记"><a href="#FFMpeg-笔记" class="headerlink" title="FFMpeg 笔记"></a>FFMpeg 笔记</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>一般视频播放器经过如下几步</p>
+<p>解协议-&gt; 解封装-&gt;解码-&gt;音视频同步-&gt;设备驱动。</p>
+<p>解协议：流媒体协议数据解析为标准封装格式数据，常见协议HTTP，RTMP，MMS等，去除传输信令数据。</p>
+<p>解封装：分解为音频流压缩码和视频流压缩码，封装格式如MP4，MKV，RMVB，TS，FLV，AVI。如FLV解为H264编码的视频流和AAC编码的音频流。</p>
+<p>解码：解压缩。音频：AAC，MP3，AC-3等，视频：H.264, MPEG2,VC-1。此步最复杂。压缩数据转换为非压缩的颜色数据，如YUV420p，RGB，音频如PCM</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/06/26/note/FFMpeg 笔记/" data-id="ck2abxfvr00033aqg36k3go3t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -264,7 +710,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -286,6 +732,14 @@
         
           <li>
             <a href="/2019/10/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
           </li>
         
       </ul>

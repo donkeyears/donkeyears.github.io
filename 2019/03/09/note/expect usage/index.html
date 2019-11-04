@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>expect usage | donkeyears&#39;s blog site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="expect 注意事项shell环境的一个优点是可以自动化，一些重复，循环使用的命令完全可以由自动化脚本去执行。但是简单的eshell脚本只是简单的主动去执行，而没有去管标准输出的反馈信息。如何去处理反馈呢？这时候expect就有了用武之地。 expect是Don Libes在1990年创造。是一个实现自动化交互的软件。主要由四个命令组成： expect，接收进程字符串 send，发送指定字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="expect usage">
+<meta property="og:url" content="http://donkeyears.github.io/2019/03/09/note/expect usage/index.html">
+<meta property="og:site_name" content="donkeyears&#39;s blog site">
+<meta property="og:description" content="expect 注意事项shell环境的一个优点是可以自动化，一些重复，循环使用的命令完全可以由自动化脚本去执行。但是简单的eshell脚本只是简单的主动去执行，而没有去管标准输出的反馈信息。如何去处理反馈呢？这时候expect就有了用武之地。 expect是Don Libes在1990年创造。是一个实现自动化交互的软件。主要由四个命令组成： expect，接收进程字符串 send，发送指定字符串">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-01T12:23:34.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="expect usage">
+<meta name="twitter:description" content="expect 注意事项shell环境的一个优点是可以自动化，一些重复，循环使用的命令完全可以由自动化脚本去执行。但是简单的eshell脚本只是简单的主动去执行，而没有去管标准输出的反馈信息。如何去处理反馈呢？这时候expect就有了用武之地。 expect是Don Libes在1990年创造。是一个实现自动化交互的软件。主要由四个命令组成： expect，接收进程字符串 send，发送指定字符串">
+  
+    <link rel="alternate" href="/atom.xml" title="donkeyears&#39;s blog site" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">donkeyears&#39;s blog site</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Practice makes perfect</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://donkeyears.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-note/expect usage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/09/note/expect usage/" class="article-date">
+  <time datetime="2019-03-09T12:52:07.608Z" itemprop="datePublished">2019-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      expect usage
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="expect-注意事项"><a href="#expect-注意事项" class="headerlink" title="expect 注意事项"></a>expect 注意事项</h1><p>shell环境的一个优点是可以自动化，一些重复，循环使用的命令完全可以由自动化脚本去执行。但是简单的eshell脚本只是简单的主动去执行，而没有去管标准输出的反馈信息。如何去处理反馈呢？这时候expect就有了用武之地。</p>
+<p>expect是Don Libes在1990年创造。是一个实现自动化交互的软件。主要由四个命令组成：</p>
+<p>expect，接收进程字符串</p>
+<p>send，发送指定字符串</p>
+<p>spawn，产生一个新的进程进行交互</p>
+<p>interact。允许用户进行交互。</p>
+<p>expect和send是expect的精髓，一种模式-动作进行交互，接收某些条件的输入，进行对应的操作。类似于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expect &quot;hi&quot;</span><br><span class="line">send &quot;hello \r&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一来一往，循环往复。自动交互。</p>
+<p>expect 可以理解为一种特殊shell，如果想写成脚本，则要在文件开头写上执行文件位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/expect</span><br></pre></td></tr></table></figure>
+
+<h2 id="bash执行expect脚本"><a href="#bash执行expect脚本" class="headerlink" title="bash执行expect脚本"></a>bash执行expect脚本</h2><ol>
+<li><p>使用expect -c “…”  注意…中的expect脚本双引号要使用转义符号\</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">expect -c <span class="string">"</span></span><br><span class="line"><span class="string">	expect \"a\"</span></span><br><span class="line"><span class="string">	send \"b\"</span></span><br><span class="line"><span class="string">"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用hello document()的嵌套模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;123&quot;</span><br><span class="line">/usr/bin/expect &lt;&lt;EOF　　#利用here document的expect代码嵌套</span><br><span class="line"># expect 会将命令开头到输入EOF之间的内容作为expect的参数。</span><br><span class="line">spawn ssh root@172.16.11.99</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;rootzhang\r&quot;</span><br><span class="line">expect &quot;*#&quot;</span><br><span class="line">send &quot;touch zhangjiacai\r&quot;</span><br><span class="line">expect &quot;*#&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br><span class="line">expect eof　　#捕获结束  这句必须加上才可以</span><br><span class="line">#EOF之内的变量为bash的变量。不是set的。！！！！</span><br><span class="line"></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="多分支判断"><a href="#多分支判断" class="headerlink" title="多分支判断"></a>多分支判断</h2><p>注意：</p>
+<p>expect和{之间要有空格，</p>
+<p>下面每一行前边不能用tab，只能用空格。</p>
+<p>exp_continue 后边会继续等待。</p>
+<p>最后加上interact允许用户进入交互。否则你如论输入什么都没有回复。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">expect &#123;</span><br><span class="line">　　&quot;hi&quot; &#123; send &quot;You said hi\n&quot;; exp_continue&#125;</span><br><span class="line">　　&quot;hello&quot; &#123; send &quot;Hello yourself\n&quot;; exp_continue&#125;</span><br><span class="line">　　&quot;bye&quot; &#123; send &quot;That was unexpected\n&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/03/09/note/expect usage/" data-id="ck2katuha0002nbqgrsas0owv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/note/线程锁/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          线程锁
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/09/note/sed用法总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sed用法总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/28/note/README/">README</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/21/markdown-help/">markdown-help</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 donkeyears<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

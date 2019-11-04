@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Kafka | donkeyears&#39;s blog site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Kafka消息队列产生的需求比如取快递，消费者和快递员都很忙，谁也不会等谁，那么就需要一个中间商(比如丰巢，菜鸟)来去缓存消息。快递员把快递放在丰巢，然后消费者有空的时候去取件。这样彼此都可以各忙各的。这个丰巢就是一个消息队列，快递员是生产者，消费者就是消费者。生产者在需要的时候把消息放在消息队列，生产者在空闲时去处理消息，消息被处理后就没了。当过期后也会被清理。 好处：  解耦：生产者消费者都不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka">
+<meta property="og:url" content="http://donkeyears.github.io/2019/06/26/note/Kafka/index.html">
+<meta property="og:site_name" content="donkeyears&#39;s blog site">
+<meta property="og:description" content="Kafka消息队列产生的需求比如取快递，消费者和快递员都很忙，谁也不会等谁，那么就需要一个中间商(比如丰巢，菜鸟)来去缓存消息。快递员把快递放在丰巢，然后消费者有空的时候去取件。这样彼此都可以各忙各的。这个丰巢就是一个消息队列，快递员是生产者，消费者就是消费者。生产者在需要的时候把消息放在消息队列，生产者在空闲时去处理消息，消息被处理后就没了。当过期后也会被清理。 好处：  解耦：生产者消费者都不">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-26T10:54:41.452Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kafka">
+<meta name="twitter:description" content="Kafka消息队列产生的需求比如取快递，消费者和快递员都很忙，谁也不会等谁，那么就需要一个中间商(比如丰巢，菜鸟)来去缓存消息。快递员把快递放在丰巢，然后消费者有空的时候去取件。这样彼此都可以各忙各的。这个丰巢就是一个消息队列，快递员是生产者，消费者就是消费者。生产者在需要的时候把消息放在消息队列，生产者在空闲时去处理消息，消息被处理后就没了。当过期后也会被清理。 好处：  解耦：生产者消费者都不">
+  
+    <link rel="alternate" href="/atom.xml" title="donkeyears&#39;s blog site" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">donkeyears&#39;s blog site</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Practice makes perfect</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://donkeyears.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-note/Kafka" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/26/note/Kafka/" class="article-date">
+  <time datetime="2019-06-26T10:46:10.028Z" itemprop="datePublished">2019-06-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kafka
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h1><h2 id="消息队列产生的需求"><a href="#消息队列产生的需求" class="headerlink" title="消息队列产生的需求"></a>消息队列产生的需求</h2><p>比如取快递，消费者和快递员都很忙，谁也不会等谁，那么就需要一个中间商(比如丰巢，菜鸟)来去缓存消息。快递员把快递放在丰巢，然后消费者有空的时候去取件。这样彼此都可以各忙各的。这个丰巢就是一个消息队列，快递员是生产者，消费者就是消费者。生产者在需要的时候把消息放在消息队列，生产者在空闲时去处理消息，消息被处理后就没了。当过期后也会被清理。</p>
+<p>好处：</p>
+<ol>
+<li>解耦：生产者消费者都不用等待对方</li>
+<li>异步：无需等待。</li>
+<li>削峰：消息队列可以处理多种类型消息。</li>
+</ol>
+<h3 id="消息队列模式"><a href="#消息队列模式" class="headerlink" title="消息队列模式"></a>消息队列模式</h3><ol>
+<li>点对点。消息队列收到消息后不处理，消费者主动去取。</li>
+<li>发布订阅：消息队列通知消费者取取。</li>
+</ol>
+<h2 id="Kafka-结构"><a href="#Kafka-结构" class="headerlink" title="Kafka 结构"></a>Kafka 结构</h2><h3 id="kafka架构及术语"><a href="#kafka架构及术语" class="headerlink" title="kafka架构及术语"></a>kafka架构及术语</h3><ol>
+<li>producer： 生产者，消息入口</li>
+<li>Broker： kafka的一个实例。</li>
+<li>topic：消息的主题。可以认为消息的分类。比如统计用户信息。</li>
+<li>Partition ：topic的分区，每个topic可以有多个分区，分区可以做负载，提高topic的吞吐。<strong>同一个topic在不同partition不重复</strong>， 比如100个消息，可以分成5个paritition分别取存储。这样可以5个线程分别去做。</li>
+<li>replication： 每一个分区都有多个副本，副本作用是做备胎，当主分区Leader故障，会从备胎Follower选择一个成为Leader。就是在不同的broker分别存放副本，提高可用性。</li>
+<li>Message：发送消息的主体。</li>
+<li>Consumer：消费者，消息出口</li>
+<li>consumer Group：多个消费者组成一个消费者组。同一个分区只能被一个消费者组中的一个消费者消费。一个消费者可以消费不同分区。</li>
+<li>ZooKeeper：保存集群元信息。保证可用性。</li>
+</ol>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><h3 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h3><p>生产者将要存的消息分别放入不同的分区。分区名为Topicname_partitionName. partition在物理上就是一个文件夹。</p>
+<p>每个分区partition由多个段 segment。每个segment大小恒定，但是里边消息数目不一定，因为消息大小在变。</p>
+<p>每个segment中是一个个的消息顺序存储。比如msg 1-100按顺序存下去。由于顺序存取机械硬盘速度比内存还快。这时高速的根源。</p>
+<p>每个segment有三个文件 .index .log    .timeindex三个文件。log存message。index存索引。文件名前边为segment中最小offset。比如第一个log存了msg 0-15. segment2中的log存了msg 16-50.那么log名字分别为 0.log   15.log 51.log .三个segment大小相等，log数字递增。这样后期查找可以先根据seg名字快速索引。</p>
+<h3 id="消费数据。"><a href="#消费数据。" class="headerlink" title="消费数据。"></a>消费数据。</h3><p>快速找到msg。 首先找到seg段，比如msg40就取第二个segment。然后从seg2 的index去寻找消息。seg2 index使用稀疏索引。就是索引只保存了 15，25，35，45的开始位置，那么我们从35开始找到文件，很快就找到了msg40.</p>
+<p>索引利用segment+有序offset+稀疏索引+二分查找+顺序查找。快速定位数据。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/b37beff657f3" target="_blank" rel="noopener">kafka 数据可靠性深度解读</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/68052232" target="_blank" rel="noopener">基本原理，再过半小时，你就能明白kafka的工作原理了</a></p>
+<p><a href="https://www.cnblogs.com/jasongj/p/7912348.html" target="_blank" rel="noopener">kafka 系列解析</a></p>
+<p><a href="https://www.infoq.cn/article/kafka-analysis-part-1" target="_blank" rel="noopener">kafka 架构介绍</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://donkeyears.github.io/2019/06/26/note/Kafka/" data-id="ck2abxfvq00023aqglswh8vf4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/01/note/Vim学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vim学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/26/note/FFMpeg 笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FFMpeg 笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/28/note/README/">README</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/21/markdown-help/">markdown-help</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/20/note/hexo博客搭建/">hexo博客搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/note/QOS quality of service/">QOS quality of service</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 donkeyears<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
